@@ -12,6 +12,7 @@
     <use :xlink:href="iconName" />
   </svg>
 </template>
+
 <script setup>
 import { isExternal as external } from '@/utils/validate'
 import { computed, defineProps } from 'vue'
