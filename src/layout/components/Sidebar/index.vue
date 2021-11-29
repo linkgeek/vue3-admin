@@ -1,14 +1,8 @@
 <template>
   <div class="">
     <div class="logo-container">
-      <el-avatar
-        :size="logoHeight"
-        shape="square"
-        src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
-      />
-      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
-        vue3-admin
-      </h1>
+      <el-avatar shape="square" :src="logoUrl" :size="logoHeight" />
+      <h1 class="logo-title" v-if="$store.getters.sidebarOpened">Vue3-admin</h1>
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>
@@ -20,7 +14,8 @@
 import SidebarMenu from './SidebarMenu'
 import {} from 'vue'
 
-const logoHeight = 44
+const logoUrl = require('../../../assets/logo-full.png')
+const logoHeight = 40
 </script>
 
 <style lang="scss" scoped>

@@ -117,6 +117,7 @@ export default {
     drop: '将文件拖到此处'
   },
   excel: {
+    id: '序号',
     importExcel: 'excel 导入',
     exportExcel: 'excel 导出',
     exportZip: 'zip 导出',
@@ -152,7 +153,8 @@ export default {
     dialogTitle: '新增角色',
     dialogRole: '角色名称',
     dialogDesc: '角色描述',
-    updateRoleSuccess: '用户角色更新成功'
+    updateRoleSuccess: '用户角色更新成功',
+    updatePermissionSuccess: '角色权限更新成功'
   },
   permission: {
     name: '权限名称',

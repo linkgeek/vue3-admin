@@ -21,6 +21,9 @@
 
       <!-- 内容区 -->
       <app-main />
+
+      <!-- 顶部的 navbar -->
+      <backtop />
     </div>
   </div>
 </template>
@@ -30,6 +33,7 @@ import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain'
 import TagsView from '@/components/TagsView'
+import Backtop from '@/components/Backtop'
 </script>
 
 <style lang="scss" scoped>

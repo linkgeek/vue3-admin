@@ -29,3 +29,6 @@ npm i --save fuse.js@6.4.6
 
 # 引导页
 npm i driver.js@0.9.8
+
+# 处理时间
+npm i dayjs@1.10.6

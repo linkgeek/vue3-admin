@@ -118,6 +118,7 @@ export default {
     drop: 'Drag files here'
   },
   excel: {
+    id: 'ID',
     importExcel: 'excel import',
     exportExcel: 'excel export',
     exportZip: 'zip export',
@@ -153,7 +154,8 @@ export default {
     dialogTitle: 'New role',
     dialogRole: 'Role Name',
     dialogDesc: 'Role description',
-    updateRoleSuccess: 'User role updated successfully'
+    updateRoleSuccess: 'User role updated successfully',
+    updatePermissionSuccess: 'Role permission updated successfully'
   },
   permission: {
     name: 'Authority name',
