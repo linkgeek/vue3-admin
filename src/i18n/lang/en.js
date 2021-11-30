@@ -1,6 +1,6 @@
 export default {
   login: {
-    title: 'User Login',
+    title: 'Vue3 Manage System',
     loginBtn: 'Login',
     usernameRule: 'Username is required',
     passwordRule: 'Password cannot be less than 6 digits',

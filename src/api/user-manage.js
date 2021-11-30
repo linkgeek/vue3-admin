@@ -4,7 +4,6 @@ import request from '@/utils/request'
  * 获取用户列表
  */
 export const getUserManageList = (data) => {
-  console.log('分页：', data)
   return request({
     url: '/user-manage/list',
     params: data

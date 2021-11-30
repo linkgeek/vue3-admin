@@ -4,9 +4,11 @@
     class="international"
     @command="handleSetLanguage"
   >
-    <div id="guide-lang">
-      <el-tooltip :content="$t('msg.navBar.lang')">
-        <svg-icon icon="language"></svg-icon>
+    <div>
+      <el-tooltip :content="$t('msg.navBar.lang')" :effect="effect">
+        <span id="guide-lang">
+          <svg-icon icon="language" />
+        </span>
       </el-tooltip>
     </div>
     <template #dropdown>
@@ -28,6 +30,7 @@ import { defineProps, computed } from 'vue'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
 
+// el-tooltip的样式
 defineProps({
   effect: {
     type: String,

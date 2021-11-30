@@ -2,8 +2,13 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
-        <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+        <!-- v-permission="['importUser']" -->
+        <el-button type="primary" @click="onImportExcel">{{
+          $t('msg.excel.importExcel')
+        }}</el-button>
+        <el-button type="success" @click="onExportExcel">{{
+          $t('msg.excel.exportExcel')
+        }}</el-button>
       </div>
     </el-card>
 
@@ -62,20 +67,12 @@
             <el-button type="primary" size="mini" @click="onShowClick(row._id)">
               {{ $t('msg.excel.show') }}
             </el-button>
-            <el-button
-              type="info"
-              size="mini"
-              @click="onShowRoleClick(row)"
-              v-permission="['distributeRole']"
-            >
+            <!-- v-permission="['distributeRole']" -->
+            <el-button type="info" size="mini" @click="onShowRoleClick(row)">
               {{ $t('msg.excel.showRole') }}
             </el-button>
-            <el-button
-              type="danger"
-              size="mini"
-              @click="onRemoveClick(row)"
-              v-permission="['removeUser']"
-            >
+            <!-- v-permission="['removeUser']" -->
+            <el-button type="danger" size="mini" @click="onRemoveClick(row)">
               {{ $t('msg.excel.remove') }}
             </el-button>
           </template>
@@ -119,7 +116,8 @@ const getListData = async () => {
     page: page.value,
     size: size.value
   })
-  console.log(result.list)
+  console.log('result: ', result)
+
   tableData.value = result.list
   total.value = result.total
 }
@@ -140,9 +138,7 @@ const handleSizeChange = (currentSize) => {
 const roleDialogVisible = ref(false)
 const selectUserId = ref('')
 const onShowRoleClick = (row) => {
-  console.log('row: ', row)
   roleDialogVisible.value = true
-  console.log('roleDialogVisible: ', roleDialogVisible.value)
   selectUserId.value = row._id
 }
 

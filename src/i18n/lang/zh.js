@@ -1,6 +1,6 @@
 export default {
   login: {
-    title: '用户登录',
+    title: 'Vue3 管理后台',
     loginBtn: '登录',
     usernameRule: '用户名为必填项',
     passwordRule: '密码不能少于6位',

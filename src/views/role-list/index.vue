@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <el-card>
       <el-table :data="roleLists" border style="width: 100%">
         <el-table-column
@@ -20,11 +20,11 @@
           width="200"
           #default="{ row }"
         >
+          <!-- v-permission="['distributePermission']" -->
           <el-button
             type="primary"
             size="mini"
             @click="onDistributePermissionClick(row)"
-            v-permission="['distributePermission']"
           >
             {{ $t('msg.role.assignPermissions') }}
           </el-button>
