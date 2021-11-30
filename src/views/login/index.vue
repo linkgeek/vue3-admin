@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
+    <el-form
+      class="login-form"
+      ref="loginFormRef"
+      :model="loginForm"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3 class="title">Vue3管理后台</h3>
       </div>
@@ -35,9 +40,14 @@
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handleLogin"
+      <el-button
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        :loading="loading"
+        @click="handleLogin"
         >登录</el-button
       >
+      <p v-html="$t('msg.login.desc')"></p>
     </el-form>
   </div>
 </template>
@@ -176,6 +186,9 @@ $cursor: #fff;
       color: $dark_gray;
       cursor: pointer;
       user-select: none;
+    }
+    p {
+      color: #ccc;
     }
   }
 }

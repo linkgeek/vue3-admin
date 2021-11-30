@@ -6,7 +6,6 @@ export default {
     passwordRule: '密码不能少于6位',
     desc: `
     测试权限账号：<br />
-    提供三种权限账号：<br />
     1. 超级管理员账号： super-admin <br />
     2. 管理员账号：admin <br />
     3. 测试可配置账号：test <br />
@@ -20,13 +19,13 @@ export default {
   },
   route: {
     profile: '个人中心',
-    user: '用户',
+    user: '系统管理',
     excelImport: 'Excel导入',
     userManage: '员工管理',
     userInfo: '员工信息',
     roleList: '角色列表',
     permissionList: '权限列表',
-    article: '文章',
+    article: '文章管理',
     articleRanking: '文章排名',
     articleCreate: '创建文章',
     articleDetail: '文章详情',

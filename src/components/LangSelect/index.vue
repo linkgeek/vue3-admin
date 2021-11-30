@@ -4,9 +4,9 @@
     class="international"
     @command="handleSetLanguage"
   >
-    <div>
-      <el-tooltip :content="$t('msg.navBar.lang')" :effect="effect">
-        <svg-icon id="guide-lang" icon="language" />
+    <div id="guide-lang">
+      <el-tooltip :content="$t('msg.navBar.lang')">
+        <svg-icon icon="language"></svg-icon>
       </el-tooltip>
     </div>
     <template #dropdown>

@@ -5,30 +5,29 @@
 
     <div class="right-menu">
       <guide class="right-menu-item hover-effect" />
-      <header-search id="guide-search" class="right-menu-item hover-effect"></header-search>
+      <header-search
+        id="guide-search"
+        class="right-menu-item hover-effect"
+      ></header-search>
       <screenfull id="guide-full" class="right-menu-item hover-effect" />
-      <theme-picker id="guide-theme" class="right-menu-item hover-effect"></theme-picker>
-      <lang-select id="guide-lang" class="right-menu-item hover-effect" />
+      <theme-picker class="right-menu-item hover-effect"></theme-picker>
+      <lang-select class="right-menu-item hover-effect"></lang-select>
 
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar
-            shape="square"
-            :size="40"
-            :src="$store.getters.userInfo.avatar"
-          ></el-avatar>
+          <el-avatar shape="square" :src="userAvatar"></el-avatar>
           <i class="el-icon-s-tools"></i>
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
-            <router-link to="/">
+            <!-- <router-link to="/">
               <el-dropdown-item> {{ $t('msg.navBar.home') }} </el-dropdown-item>
             </router-link>
             <a target="_blank" href="">
               <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
-            </a>
-            <el-dropdown-item divided @click="logout">
+            </a> -->
+            <el-dropdown-item @click="logout">
               {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -48,6 +47,9 @@ import ThemePicker from '@/components/ThemePicker'
 import Screenfull from '@/components/Screenfull'
 import HeaderSearch from '@/components/HeaderSearch'
 import Guide from '@/components/Guide'
+
+// $store.getters.userInfo.avatar
+const userAvatar = require('../../assets/logo-icon.png')
 
 const store = useStore()
 const logout = () => {
@@ -85,6 +87,7 @@ const logout = () => {
     align-items: center;
     float: right;
     padding-right: 16px;
+    line-height: 50px;
 
     ::v-deep .right-menu-item {
       display: inline-block;
@@ -109,6 +112,8 @@ const logout = () => {
         margin-top: 5px;
         position: relative;
         .el-avatar {
+          width: 33px;
+          height: 30px;
           --el-avatar-background-color: none;
           margin-right: 12px;
         }

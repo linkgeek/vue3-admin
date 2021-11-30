@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="logo-container">
-      <el-avatar shape="square" :src="logoUrl" :size="logoHeight" />
+      <el-avatar shape="square" :src="logoUrl" />
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">Vue3-admin</h1>
     </div>
     <el-scrollbar>
@@ -25,6 +25,10 @@ const logoHeight = 40
   display: flex;
   align-items: center;
   justify-content: center;
+  .el-avatar {
+    width: 43px;
+    height: 40px;
+  }
   .logo-title {
     margin-left: 10px;
     color: #fff;
