@@ -2,7 +2,7 @@
   <div>
     <el-tooltip :content="$t('msg.navBar.guide')">
       <span id="guide-start" @click="onClick">
-        <svg-icon icon="guide" />
+        <svg-icon icon="guide"></svg-icon>
       </span>
     </el-tooltip>
   </div>

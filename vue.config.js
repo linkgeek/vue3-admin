@@ -6,6 +6,7 @@ function resolve(dir) {
 
 module.exports = {
   devServer: {
+    port: 9097,
     // 配置反向代理
     proxy: {
       // 当地址中有/api的时候回触发代理机制

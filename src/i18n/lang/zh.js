@@ -1,12 +1,11 @@
 export default {
   login: {
-    title: '用户登录',
+    title: 'Vue3 管理后台',
     loginBtn: '登录',
     usernameRule: '用户名为必填项',
     passwordRule: '密码不能少于6位',
     desc: `
     测试权限账号：<br />
-    提供三种权限账号：<br />
     1. 超级管理员账号： super-admin <br />
     2. 管理员账号：admin <br />
     3. 测试可配置账号：test <br />

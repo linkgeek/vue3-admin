@@ -1,12 +1,11 @@
 export default {
   login: {
-    title: 'User Login',
+    title: 'Vue3 Manage System',
     loginBtn: 'Login',
     usernameRule: 'Username is required',
     passwordRule: 'Password cannot be less than 6 digits',
     desc: `
     Test authority account:<br />
-     Provide three kinds of authority accounts:<br />
      1. Super administrator account: super-admin <br />
      2. Administrator account: admin <br />
      3. Test configurable account: test <br />
@@ -20,13 +19,13 @@ export default {
   },
   route: {
     profile: 'Profile',
-    user: 'user',
+    user: 'System Manage',
     excelImport: 'ExcelImport',
     userManage: 'EmployeeManage',
     userInfo: 'UserInfo',
     roleList: 'RoleList',
     permissionList: 'PermissionList',
-    article: 'article',
+    article: 'Article Manage',
     articleRanking: 'ArticleRanking',
     articleCreate: 'ArticleCreate',
     articleDetail: 'ArticleDetail',
