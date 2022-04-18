@@ -17,7 +17,7 @@ service.interceptors.request.use(
       if (isCheckTimeout()) {
         // 登出操作
         store.dispatch('user/logout')
-        return Promise.reject(new Error('token失效'))
+        return Promise.reject(new Error('请重新登录'))
       }
       // 如果token存在 注入token
       config.headers.Authorization = `Bearer ${store.getters.token}`
@@ -33,7 +33,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const { success, message, data } = response.data
-    //   要根据success的成功与否决定下面的操作
+    // 要根据success的成功与否决定下面的操作
     if (success) {
       return data
     } else {

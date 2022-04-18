@@ -24,13 +24,13 @@ export default {
     // 登录
     login(context, userInfo) {
       const { username, password } = userInfo
+      // console.log(password, process.env.VUE_APP_BASE_SALT, password + process.env.VUE_APP_BASE_SALT)
       return new Promise((resolve, reject) => {
         login({
           username,
-          password: md5(password)
+          password: md5(password + process.env.VUE_APP_BASE_SALT)
         })
           .then((data) => {
-            console.log(data)
             this.commit('user/setToken', data.token)
             // 保存登录时间
             setTimeStamp()

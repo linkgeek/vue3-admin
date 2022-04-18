@@ -9,9 +9,10 @@ module.exports = {
     // 配置反向代理
     proxy: {
       // 当地址中有/api的时候回触发代理机制
-      '/api': {
+      '/admin': {
         // 要代理的服务器地址 这里不用写 api
-        target: 'https://api.imooc-admin.lgdsunday.club/',
+        // target: 'https://api.imooc-admin.lgdsunday.club/',
+        target: 'http://127.0.0.1:9092/',
         changeOrigin: true // 是否跨域
       }
     }

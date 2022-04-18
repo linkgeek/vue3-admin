@@ -2,8 +2,23 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
-        <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+        <el-form :inline="true" :model="searchUser" class="demo-form-inline">
+          <el-form-item label="姓名">
+            <el-input v-model="searchUser.user" placeholder="姓名" />
+          </el-form-item>
+            <el-form-item label="手机号">
+              <el-input v-model="searchUser.phone" placeholder="手机号" />
+            </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+          </el-form-item>
+
+          <el-form-item class="text-right" style="margin-right:0">
+            <el-button type="warning">{{ $t('msg.excel.userAdd') }}</el-button>
+            <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
+            <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+          </el-form-item>
+        </el-form>
       </div>
     </el-card>
 
@@ -66,7 +81,6 @@
               type="info"
               size="mini"
               @click="onShowRoleClick(row)"
-              v-permission="['distributeRole']"
             >
               {{ $t('msg.excel.showRole') }}
             </el-button>
@@ -74,7 +88,6 @@
               type="danger"
               size="mini"
               @click="onRemoveClick(row)"
-              v-permission="['removeUser']"
             >
               {{ $t('msg.excel.remove') }}
             </el-button>
@@ -104,7 +117,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, reactive } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import RolesDialog from './components/roles.vue'
@@ -119,7 +132,7 @@ const getListData = async () => {
     page: page.value,
     size: size.value
   })
-  console.log(result.list)
+
   tableData.value = result.list
   total.value = result.total
 }
@@ -136,27 +149,39 @@ const handleSizeChange = (currentSize) => {
   getListData()
 }
 
-// 角色
+// 获取用户角色
 const roleDialogVisible = ref(false)
 const selectUserId = ref('')
 const onShowRoleClick = (row) => {
-  console.log('row: ', row)
   roleDialogVisible.value = true
-  console.log('roleDialogVisible: ', roleDialogVisible.value)
   selectUserId.value = row._id
+}
+
+// 删除
+const onRemoveClick = (row) => {
+  console.log('row: ', row)
 }
 
 // 保证数据刷新
 watch(roleDialogVisible, (val) => {
   if (!val) selectUserId.value = ''
 })
+
+// 查询用户
+const searchUser = reactive({
+  user: '',
+  phone: ''
+})
+
+const onSubmit = () => {
+  console.log('submit!', searchUser)
+}
 </script>
 
 <style lang="scss" scoped>
 .user-manage-container {
   .header {
     margin-bottom: 22px;
-    text-align: right;
   }
   ::v-deep .avatar {
     width: 60px;
@@ -170,6 +195,10 @@ watch(roleDialogVisible, (val) => {
 
   .pagination {
     margin-top: 20px;
+  }
+
+  .text-right {
+    float: right;
   }
 }
 </style>

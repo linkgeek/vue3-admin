@@ -20,13 +20,13 @@ export default {
   },
   route: {
     profile: '个人中心',
-    user: '用户',
+    user: '系统管理',
     excelImport: 'Excel导入',
     userManage: '员工管理',
     userInfo: '员工信息',
     roleList: '角色列表',
     permissionList: '权限列表',
-    article: '文章',
+    article: '文章管理',
     articleRanking: '文章排名',
     articleCreate: '创建文章',
     articleDetail: '文章详情',
@@ -118,6 +118,7 @@ export default {
   },
   excel: {
     id: '序号',
+    userAdd: '创建',
     importExcel: 'excel 导入',
     exportExcel: 'excel 导出',
     exportZip: 'zip 导出',

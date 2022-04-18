@@ -25,9 +25,9 @@
             <router-link to="/">
               <el-dropdown-item> {{ $t('msg.navBar.home') }} </el-dropdown-item>
             </router-link>
-            <a target="_blank" href="">
+            <!-- <a target="_blank" href="">
               <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
-            </a>
+            </a> -->
             <el-dropdown-item divided @click="logout">
               {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
@@ -68,7 +68,7 @@ const logout = () => {
     height: 100%;
     float: left;
     cursor: pointer;
-    // hover 动画
+    // hover 动画 秒
     transition: background 0.5s;
 
     &:hover {

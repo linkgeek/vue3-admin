@@ -1,6 +1,6 @@
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 .breadcrumb-enter-form,
@@ -13,10 +13,10 @@
   position: absolute;
 }
 
-/* fade-transform */
+/* fade-transform 秒 */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 .fade-transform-enter-from {

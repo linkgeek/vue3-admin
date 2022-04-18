@@ -47,6 +47,7 @@ import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 
 const loginForm = ref({
   username: 'super-admin',
@@ -94,6 +95,7 @@ const handleLogin = () => {
       .dispatch('user/login', loginForm.value)
       .then(() => {
         loading.value = false
+        ElMessage.success('登录成功')
         // 登录后操作
         router.push('/')
       })
