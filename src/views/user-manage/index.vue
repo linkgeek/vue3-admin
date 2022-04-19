@@ -4,17 +4,17 @@
       <div>
         <el-form :inline="true" :model="searchUser" class="demo-form-inline">
           <el-form-item label="姓名">
-            <el-input v-model="searchUser.user" placeholder="姓名" />
+            <el-input v-model="searchUser.user" placeholder="姓名" clearable />
           </el-form-item>
             <el-form-item label="手机号">
-              <el-input v-model="searchUser.phone" placeholder="手机号" />
+              <el-input v-model="searchUser.phone" placeholder="手机号" clearable />
             </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">查询</el-button>
           </el-form-item>
 
           <el-form-item class="text-right" style="margin-right:0">
-            <el-button type="warning">{{ $t('msg.excel.userAdd') }}</el-button>
+            <el-button type="warning" @click="addUserClick()">{{ $t('msg.excel.userAdd') }}</el-button>
             <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
             <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
           </el-form-item>
@@ -108,11 +108,19 @@
       ></el-pagination>
     </el-card>
 
+    <!-- 修改角色 -->
     <roles-dialog
       v-model="roleDialogVisible"
       :userId="selectUserId"
       @reflushRole="getListData"
     ></roles-dialog>
+
+    <!-- 添加用户 -->
+    <add-dialog
+      v-model="addUserDialogVisible"
+      :userId="selectUserId"
+      @reflushRole="getListData"
+    ></add-dialog>
   </div>
 </template>
 
@@ -121,35 +129,49 @@ import { ref, watch, reactive } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import RolesDialog from './components/roles.vue'
+import addDialog from './components/add.vue'
 
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
 const size = ref(5)
+const user = ref('')
+const phone = ref('')
 
+// 获取列表
 const getListData = async () => {
   const result = await getUserManageList({
     page: page.value,
-    size: size.value
+    size: size.value,
+    user: user.value,
+    phone: phone.value
   })
 
   tableData.value = result.list
   total.value = result.total
 }
 getListData()
+// 语言监控
 watchSwitchLang(getListData)
 
-// 分页刷新
+// 切页刷新
 const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
 }
+// 修改pageSize刷新
 const handleSizeChange = (currentSize) => {
   size.value = currentSize
   getListData()
 }
 
-// 获取用户角色
+// 添加用户
+const addUserDialogVisible = ref(false)
+const addUserClick = () => {
+  addUserDialogVisible.value = true
+}
+
+// 修改用户角色
 const roleDialogVisible = ref(false)
 const selectUserId = ref('')
 const onShowRoleClick = (row) => {
@@ -174,7 +196,10 @@ const searchUser = reactive({
 })
 
 const onSubmit = () => {
-  console.log('submit!', searchUser)
+  page.value = 1
+  user.value = searchUser.user
+  phone.value = searchUser.phone
+  getListData()
 }
 </script>
 
