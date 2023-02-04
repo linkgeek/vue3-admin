@@ -32,14 +32,15 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   (response) => {
-    const { success, message, data } = response.data
+    const { code, data, msg } = response.data
+    console.log('response.data: ', response.data)
     // 要根据success的成功与否决定下面的操作
-    if (success) {
+    if (code === 0) {
       return data
     } else {
       // 业务错误
-      ElMessage.error(message) // 提示错误消息
-      return Promise.reject(new Error(message))
+      ElMessage.error(msg) // 提示错误消息
+      return Promise.reject(new Error(msg))
     }
   },
   (error) => {
@@ -52,7 +53,7 @@ service.interceptors.response.use(
       // token超时
       store.dispatch('user/logout')
     }
-    ElMessage.error(error.message) // 提示错误信息
+    ElMessage.error(error.msg) // 提示错误信息
     return Promise.reject(error)
   }
 )
