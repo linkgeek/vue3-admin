@@ -11,6 +11,17 @@ export const getUserManageList = (data) => {
 }
 
 /**
+ * 批量导入
+ */
+export const userBatchImport = data => {
+  return request({
+    url: '/user-manage/batch/import',
+    method: 'POST',
+    data
+  })
+}
+
+/**
  * 删除指定数据
  */
 export const deleteUser = (id) => {
@@ -20,7 +31,25 @@ export const deleteUser = (id) => {
 }
 
 /**
- * 获取用户角色
+ * 获取所有用户列表数据
+ */
+export const getUserManageAllList = () => {
+  return request({
+    url: '/user-manage/all-list'
+  })
+}
+
+/**
+ * 获取用户详情
+ */
+export const userDetail = id => {
+  return request({
+    url: `/user-manage/detail/${id}`
+  })
+}
+
+/**
+ * 获取指定用户角色
  */
 export const userRoles = (id) => {
   return request({
@@ -29,7 +58,7 @@ export const userRoles = (id) => {
 }
 
 /**
- * 用户分配角色
+ * 分配用户角色
  */
 export const updateRole = (id, roles) => {
   return request({

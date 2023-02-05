@@ -6,17 +6,27 @@
           <el-form-item label="姓名">
             <el-input v-model="searchUser.user" placeholder="姓名" clearable />
           </el-form-item>
-            <el-form-item label="手机号">
-              <el-input v-model="searchUser.phone" placeholder="手机号" clearable />
-            </el-form-item>
+          <el-form-item label="手机号">
+            <el-input
+              v-model="searchUser.phone"
+              placeholder="手机号"
+              clearable
+            />
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">查询</el-button>
           </el-form-item>
 
-          <el-form-item class="text-right" style="margin-right:0">
-            <el-button type="warning" @click="addUserClick()">{{ $t('msg.excel.userAdd') }}</el-button>
-            <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
-            <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+          <el-form-item class="text-right" style="margin-right: 0">
+            <el-button type="warning" @click="addUserClick()">{{
+              $t('msg.excel.userAdd')
+            }}</el-button>
+            <el-button type="primary" @click="onImportExcelClick">
+              {{ $t('msg.excel.importExcel') }}</el-button
+            >
+            <el-button type="success" @click="onToExcelClick">
+              {{ $t('msg.excel.exportExcel') }}
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -77,18 +87,10 @@
             <el-button type="primary" size="mini" @click="onShowClick(row._id)">
               {{ $t('msg.excel.show') }}
             </el-button>
-            <el-button
-              type="info"
-              size="mini"
-              @click="onShowRoleClick(row)"
-            >
+            <el-button type="info" size="mini" @click="onShowRoleClick(row)">
               {{ $t('msg.excel.showRole') }}
             </el-button>
-            <el-button
-              type="danger"
-              size="mini"
-              @click="onRemoveClick(row)"
-            >
+            <el-button type="danger" size="mini" @click="onRemoveClick(row)">
               {{ $t('msg.excel.remove') }}
             </el-button>
           </template>
@@ -108,6 +110,8 @@
       ></el-pagination>
     </el-card>
 
+    <export-to-excel v-model="exportToExcelVisible"></export-to-excel>
+
     <!-- 修改角色 -->
     <roles-dialog
       v-model="roleDialogVisible"
@@ -126,11 +130,16 @@
 
 <script setup>
 import { ref, watch, reactive } from 'vue'
-import { getUserManageList } from '@/api/user-manage'
+import { getUserManageList, deleteUser } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { ElMessageBox, ElMessage } from 'element-plus'
 import RolesDialog from './components/roles.vue'
 import addDialog from './components/add.vue'
+import ExportToExcel from './components/Export2Excel.vue'
 
+// 数据相关
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
@@ -179,9 +188,24 @@ const onShowRoleClick = (row) => {
   selectUserId.value = row._id
 }
 
-// 删除
-const onRemoveClick = (row) => {
-  console.log('row: ', row)
+/**
+ * 删除按钮点击事件
+ */
+const i18n = useI18n()
+const onRemoveClick = row => {
+  ElMessageBox.confirm(
+    i18n.t('msg.excel.dialogTitle1') +
+      row.username +
+      i18n.t('msg.excel.dialogTitle2'),
+    {
+      type: 'warning'
+    }
+  ).then(async () => {
+    await deleteUser(row._id)
+    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
+    // 重新渲染数据
+    getListData()
+  })
 }
 
 // 保证数据刷新
@@ -200,6 +224,22 @@ const onSubmit = () => {
   user.value = searchUser.user
   phone.value = searchUser.phone
   getListData()
+}
+
+const router = useRouter()
+/**
+ * excel 导入点击事件
+ */
+const onImportExcelClick = () => {
+  router.push('/user/import')
+}
+
+/**
+ * excel 导出点击事件
+ */
+const exportToExcelVisible = ref(false)
+const onToExcelClick = () => {
+  exportToExcelVisible.value = true
 }
 </script>
 
