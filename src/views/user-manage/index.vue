@@ -249,13 +249,13 @@ const onToExcelClick = () => {
   .header {
     margin-bottom: 22px;
   }
-  ::v-deep .avatar {
+  :deep(.avatar) {
     width: 60px;
     height: 60px;
     border-radius: 50%;
   }
 
-  ::v-deep .el-tag {
+  :deep(.el-tag) {
     margin-right: 6px;
   }
 

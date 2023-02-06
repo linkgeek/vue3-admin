@@ -6,6 +6,6 @@ const whiteList = ['/login', '/import', '/404', '/401']
  * @param {*} path
  * @returns
  */
-export function isTags (path) {
+export function isTags(path) {
   return !whiteList.includes(path)
 }
