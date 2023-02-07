@@ -2,17 +2,17 @@ import path from 'path'
 import i18n from '@/i18n'
 
 /**
- * 帅选出可供搜索的路由对象
+ * 筛选出可供搜索的路由对象
  * @param routes 路由表
  * @param basePath 基础路径，默认为 /
  * @param prefixTitle
  */
 export const generateRoutes = (routes, basePath = '/', prefixTitle = []) => {
-  // 创建result 数据
+  // 创建 result 数据
   let res = []
-  // 循环routes 路由
+  // 循环 routes 路由
   for (const route of routes) {
-    // 创建包含path和title的item
+    // 创建包含 path 和 title 的 item
     const data = {
       path: path.resolve(basePath, route.path),
       title: [...prefixTitle]
@@ -28,7 +28,7 @@ export const generateRoutes = (routes, basePath = '/', prefixTitle = []) => {
       res.push(data)
     }
 
-    // 存在children时，迭代调用
+    // 存在 children 时，迭代调用
     if (route.children) {
       const tempRoutes = generateRoutes(route.children, data.path, data.title)
       if (tempRoutes.length >= 1) {

@@ -18,6 +18,7 @@ export const getHeaderRow = (sheet) => {
   }
   return headers
 }
+
 export const isExcel = (file) => {
   return /\.(xlsx|xls|csv)$/.test(file.name)
 }

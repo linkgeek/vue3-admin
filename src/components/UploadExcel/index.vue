@@ -20,7 +20,7 @@
       @dragover.stop.prevent="handleDragover"
       @dragenter.stop.prevent="handleDragover"
     >
-      <el-icon><upload-filled /></el-icon>
+      <i class="el-icon-upload" />
       <span>{{ $t('msg.uploadExcel.drop') }}</span>
     </div>
   </div>
@@ -39,20 +39,6 @@ const props = defineProps({
   onSuccess: Function
 })
 
-/**
- * 点击上传触发
- */
-const loading = ref(false)
-const excelUploadInput = ref(null)
-const handleUpload = () => {
-  excelUploadInput.value.click()
-}
-const handleChange = (e) => {
-  const files = e.target.files
-  const rawFile = files[0] // only use files[0]
-  if (!rawFile) return
-  upload(rawFile)
-}
 /**
  * 拖拽文本释放时触发
  */
@@ -80,6 +66,21 @@ const handleDragover = (e) => {
   // https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer/dropEffect
   // 在新位置生成源项的副本
   e.dataTransfer.dropEffect = 'copy'
+}
+
+/**
+ * 点击上传触发
+ */
+const loading = ref(false)
+const excelUploadInput = ref(null)
+const handleUpload = () => {
+  excelUploadInput.value.click()
+}
+const handleChange = (e) => {
+  const files = e.target.files
+  const rawFile = files[0] // only use files[0]
+  if (!rawFile) return
+  upload(rawFile)
 }
 
 /**
@@ -114,7 +115,7 @@ const readerData = (rawFile) => {
       const data = e.target.result
       // 2. 利用 XLSX 对数据进行解析
       const workbook = XLSX.read(data, { type: 'array' })
-      // 3. 获取第一张表格(工作簿)名称
+      // 3. 获取第一张表格（工作簿）名称
       const firstSheetName = workbook.SheetNames[0]
       // 4. 只读取 Sheet1（第一张表格）的数据
       const worksheet = workbook.Sheets[firstSheetName]
@@ -165,10 +166,9 @@ const generateData = (excelData) => {
     flex-direction: column;
     justify-content: center;
     color: #bbb;
-    .el-icon {
+    i {
       font-size: 60px;
       display: block;
-      margin: 0 auto;
     }
   }
 }

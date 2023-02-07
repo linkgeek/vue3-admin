@@ -19,12 +19,12 @@ export const rolePermission = (roleId) => {
 }
 
 /**
- * 角色分配权限
+ * 为角色修改权限
  */
-export const distrubutePermission = (data) => {
+export const distributePermission = (data) => {
   return request({
     url: '/role/distribute-permission',
-    method: 'post',
+    method: 'POST',
     data
   })
 }

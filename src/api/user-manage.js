@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 /**
- * 获取用户列表
+ * 获取用户列表数据
  */
 export const getUserManageList = (data) => {
   return request({
@@ -11,9 +11,9 @@ export const getUserManageList = (data) => {
 }
 
 /**
- * 批量导入
+ * 批量录入
  */
-export const userBatchImport = data => {
+export const userBatchImport = (data) => {
   return request({
     url: '/user-manage/batch/import',
     method: 'POST',
@@ -42,7 +42,7 @@ export const getUserManageAllList = () => {
 /**
  * 获取用户详情
  */
-export const userDetail = id => {
+export const userDetail = (id) => {
   return request({
     url: `/user-manage/detail/${id}`
   })
@@ -63,7 +63,7 @@ export const userRoles = (id) => {
 export const updateRole = (id, roles) => {
   return request({
     url: `/user-manage/update-role/${id}`,
-    method: 'post',
+    method: 'POST',
     data: {
       roles
     }

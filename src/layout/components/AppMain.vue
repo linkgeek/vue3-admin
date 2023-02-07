@@ -12,14 +12,12 @@
 
 <script setup>
 import { watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
 import { isTags } from '@/utils/tags'
 import { generateTitle, watchSwitchLang } from '@/utils/i18n'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
 const route = useRoute()
-const store = useStore()
-
 /**
  * 生成 title
  */
@@ -38,6 +36,7 @@ const getTitle = (route) => {
 /**
  * 监听路由变化
  */
+const store = useStore()
 watch(
   route,
   (to, from) => {

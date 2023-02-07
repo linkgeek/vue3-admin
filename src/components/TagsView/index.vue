@@ -14,7 +14,6 @@
         @contextmenu.prevent="openMenu($event, index)"
       >
         {{ tag.title }}
-
         <i
           v-show="!isActive(tag)"
           class="el-icon-close"
@@ -39,7 +38,6 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
 const route = useRoute()
-const store = useStore()
 
 /**
  * 是否被选中
@@ -51,6 +49,7 @@ const isActive = (tag) => {
 /**
  * 关闭当前 tag 的点击事件
  */
+const store = useStore()
 const onCloseClick = (index) => {
   store.commit('app/removeTagsView', {
     type: 'index',

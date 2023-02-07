@@ -20,8 +20,8 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import MenuItem from './MenuItem'
+import { defineProps } from 'vue'
 
 // 定义 props
 defineProps({
@@ -31,5 +31,3 @@ defineProps({
   }
 })
 </script>
-
-<style lang="scss" scoped></style>

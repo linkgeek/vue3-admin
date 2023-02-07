@@ -1,32 +1,33 @@
 import store from '@/store'
 
 function checkPermission(el, binding) {
-  // 获取权限
+  // 获取绑定的值, 此处为权限
   const { value } = binding
-  console.log('binding-value: ', value)
   // 获取功能权限
   const points = store.getters.userInfo.permission.points
-  console.log('points: ', points)
+  // 当传入的指令集为数组时
   if (value && value instanceof Array) {
+    // 匹配对应的指令
     const hasPermission = points.some((point) => {
       return value.includes(point)
     })
-    console.log('hasPermission: ', hasPermission)
-
+    // 如果无法匹配，则表示当前用户无该指令,那么删除对应的功能按钮
     if (!hasPermission) {
       el.parentNode && el.parentNode.removeChild(el)
     }
   } else {
-    throw new Error('v-permisison value is ["admin", "editor"...]')
+    // eslint-disabled-next-line
+    throw new Error('v-permission value is ["admin","editor"]')
   }
 }
 
 export default {
+  // 在绑定元素的父组件被挂载后调用
   mounted(el, binding) {
     checkPermission(el, binding)
   },
-  updated(el, binding) {
+  // 在包含组件的 Vnode 及其子组件的 Vnode 更新后调用
+  update(el, binding) {
     checkPermission(el, binding)
-  },
-  beforeUnmount() {}
+  }
 }

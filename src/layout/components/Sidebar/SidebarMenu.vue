@@ -1,14 +1,15 @@
 <template>
   <!-- 一级 menu 菜单 -->
   <el-menu
-    :default-active="activeMenu"
-    :collapse="!$store.getters.sidebarOpened"
+    :uniqueOpened="true"
     :background-color="$store.getters.cssVar.menuBg"
     :text-color="$store.getters.cssVar.menuText"
     :active-text-color="$store.getters.cssVar.menuActiveText"
-    :unique-opened="true"
     router
+    :default-active="activeMenu"
+    :collapse="!$store.getters.sidebarOpened"
   >
+    <!-- 子集 menu 菜单 -->
     <sidebar-item
       v-for="item in routes"
       :key="item.path"
@@ -19,7 +20,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { filterRouters, generateMenus } from '@/utils/route'
 import SidebarItem from './SidebarItem.vue'
 

@@ -39,7 +39,6 @@
 </template>
 
 <script setup>
-import {} from 'vue'
 import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'

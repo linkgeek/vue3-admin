@@ -1,6 +1,8 @@
 // 导入所有的svg图标
 import SvgIcon from '@/components/SvgIcon'
 
+// https://webpack.docschina.org/guides/dependency-management/#requirecontext
+// 通过 require.context() 函数来创建自己的 context
 const svgRequire = require.context('./svg', false, /\.svg$/)
 
 // 此时返回一个 require 的函数，可以接受一个 request 的参数，用于 require 的导入。

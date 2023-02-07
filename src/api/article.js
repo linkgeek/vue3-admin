@@ -9,6 +9,7 @@ export const getArticleList = (data) => {
     params: data
   })
 }
+
 /**
  * 修改排序
  */
@@ -19,6 +20,7 @@ export const articleSort = (data) => {
     data
   })
 }
+
 /**
  * 删除文章
  */
@@ -27,6 +29,7 @@ export const deleteArticle = (articleId) => {
     url: `/article/delete/${articleId}`
   })
 }
+
 /**
  * 获取文章详情
  */
@@ -35,6 +38,7 @@ export const articleDetail = (articleId) => {
     url: `/article/${articleId}`
   })
 }
+
 /**
  * 创建文章
  */
@@ -45,6 +49,7 @@ export const createArticle = (data) => {
     data
   })
 }
+
 /**
  * 编辑文章详情
  */

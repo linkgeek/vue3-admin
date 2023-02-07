@@ -16,7 +16,7 @@
         <navbar />
 
         <!-- tags -->
-        <tags-view id="guide-tags"></tags-view>
+        <tags-view id="guide-tags" />
       </div>
 
       <!-- 内容区 -->

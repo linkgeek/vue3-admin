@@ -1,9 +1,7 @@
 <template>
   <div>
     <el-tooltip :content="$t('msg.navBar.guide')">
-      <span id="guide-start" @click="onClick">
-        <svg-icon icon="guide"></svg-icon>
-      </span>
+      <svg-icon id="guide-start" icon="guide" @click="onClick" />
     </el-tooltip>
   </div>
 </template>
@@ -34,4 +32,4 @@ const onClick = () => {
 }
 </script>
 
-<style scoped></style>
+<style lang='scss' scoped></style>

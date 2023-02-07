@@ -20,8 +20,6 @@ import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
-const router = useRouter()
-const store = useStore()
 const props = defineProps({
   index: {
     type: Number,
@@ -29,10 +27,12 @@ const props = defineProps({
   }
 })
 
+const router = useRouter()
 const onRefreshClick = () => {
   router.go(0)
 }
 
+const store = useStore()
 const onCloseLeftClick = () => {
   store.commit('app/removeTagsView', {
     type: 'left',

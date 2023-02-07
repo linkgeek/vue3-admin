@@ -32,7 +32,7 @@ router.beforeEach(async (to, from, next) => {
           router.addRoute(item)
         })
         // 添加路由后需主动跳转才能生效
-        console.log('to.path: ', to.path)
+        console.log('topath: ', to.path)
         return next(to.path)
       }
 
