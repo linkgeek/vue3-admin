@@ -58,7 +58,7 @@ export const generateColors = (primary) => {
  */
 const getOriginalStyle = async () => {
   const version = require('element-plus/package.json').version
-  const url = `https://unpkg.com/element-plus@${version}/lib/theme-chalk/index.css`
+  const url = `https://unpkg.com/element-plus@${version}/dist/index.css`
   const { data } = await axios(url)
   // 把获取到的数据筛选为原样式模板
   return getStyleTemplate(data)
@@ -72,6 +72,7 @@ const getStyleTemplate = (data) => {
   const colorMap = {
     '#3a8ee6': 'shade-1',
     '#409eff': 'primary',
+    '#337ecc': 'primary',
     '#53a8ff': 'light-1',
     '#66b1ff': 'light-2',
     '#79bbff': 'light-3',

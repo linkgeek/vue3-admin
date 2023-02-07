@@ -55,6 +55,13 @@
       margin-right: 16px;
     }
 
+    // 在 menu 收起时，取消 margin-left
+    .el-menu--collapse {
+      .svg-icon {
+        margin-right: 0px;
+      }
+    }
+
     .sub-el-icon {
       margin-right: 14px;
       margin-left: 2px;

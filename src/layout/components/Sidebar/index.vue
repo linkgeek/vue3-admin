@@ -14,7 +14,7 @@
 import SidebarMenu from './SidebarMenu'
 import {} from 'vue'
 
-const logoUrl = require('../../../assets/logo-full.png')
+const logoUrl = require('../../../assets/logo-icon.png')
 const logoHeight = 40
 </script>
 
