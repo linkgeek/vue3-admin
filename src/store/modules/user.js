@@ -24,7 +24,6 @@ export default {
     // 登录
     login(context, userInfo) {
       const { username, password } = userInfo
-      // console.log(password, process.env.VUE_APP_BASE_SALT, password + process.env.VUE_APP_BASE_SALT)
       return new Promise((resolve, reject) => {
         login({
           username,

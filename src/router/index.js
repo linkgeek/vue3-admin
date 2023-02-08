@@ -17,7 +17,7 @@ export const publicRoutes = [
   },
   {
     path: '/',
-    component: () => layout,
+    component: layout,
     redirect: '/profile',
     children: [
       {
