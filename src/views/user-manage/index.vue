@@ -183,39 +183,6 @@ const addUserClick = () => {
   addUserDialogVisible.value = true
 }
 
-// 修改用户角色
-const roleDialogVisible = ref(false)
-const selectUserId = ref('')
-const onShowRoleClick = (row) => {
-  roleDialogVisible.value = true
-  selectUserId.value = row._id
-}
-
-/**
- * 删除按钮点击事件
- */
-const i18n = useI18n()
-const onRemoveClick = row => {
-  ElMessageBox.confirm(
-    i18n.t('msg.excel.dialogTitle1') +
-      row.username +
-      i18n.t('msg.excel.dialogTitle2'),
-    {
-      type: 'warning'
-    }
-  ).then(async () => {
-    await deleteUser(row._id)
-    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
-    // 重新渲染数据
-    getListData()
-  })
-}
-
-// 保证数据刷新
-watch(roleDialogVisible, (val) => {
-  if (!val) selectUserId.value = ''
-})
-
 // 查询用户
 const searchUser = reactive({
   user: '',
@@ -250,7 +217,41 @@ const onToExcelClick = () => {
  * 查看按钮点击事件
  */
 const onShowClick = (id) => {
+  console.log('onShowClick: ', id)
   router.push(`/user/info/${id}`)
+}
+
+// 修改用户角色
+const roleDialogVisible = ref(false)
+const selectUserId = ref('')
+const onShowRoleClick = (row) => {
+  roleDialogVisible.value = true
+  selectUserId.value = row._id
+}
+
+// 保证数据刷新
+watch(roleDialogVisible, (val) => {
+  if (!val) selectUserId.value = ''
+})
+
+/**
+ * 删除按钮点击事件
+ */
+const i18n = useI18n()
+const onRemoveClick = row => {
+  ElMessageBox.confirm(
+    i18n.t('msg.excel.dialogTitle1') +
+      row.username +
+      i18n.t('msg.excel.dialogTitle2'),
+    {
+      type: 'warning'
+    }
+  ).then(async () => {
+    await deleteUser(row._id)
+    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
+    // 重新渲染数据
+    getListData()
+  })
 }
 </script>
 

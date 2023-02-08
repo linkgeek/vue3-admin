@@ -30,7 +30,9 @@ const detail = ref({})
 const getArticleDetail = async () => {
   detail.value = await articleDetail(articleId)
 }
+
 getArticleDetail()
+
 // 文章编辑
 const router = useRouter()
 const onEditClick = () => {

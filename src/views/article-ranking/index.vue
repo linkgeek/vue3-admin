@@ -81,11 +81,15 @@ const getListData = async () => {
   tableData.value = result.list
   total.value = result.total
 }
+
 getListData()
+
 // 监听语言切换
 watchSwitchLang(getListData)
+
 // 处理数据不重新加载的问题
 onActivated(getListData)
+
 /**
  * size 改变触发
  */
@@ -93,6 +97,7 @@ const handleSizeChange = (currentSize) => {
   size.value = currentSize
   getListData()
 }
+
 /**
  * 页码改变触发
  */
@@ -100,10 +105,12 @@ const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
 }
+
 // 表格拖拽相关
 onMounted(() => {
   initSortable(tableData, getListData)
 })
+
 /**
  * 查看按钮点击事件
  */
@@ -111,6 +118,7 @@ const router = useRouter()
 const onShowClick = row => {
   router.push(`/article/${row._id}`)
 }
+
 // 删除用户
 const i18n = useI18n()
 const onRemoveClick = (row) => {
