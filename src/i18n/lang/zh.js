@@ -117,7 +117,7 @@ export default {
     drop: '将文件拖到此处'
   },
   excel: {
-    id: '序号',
+    id: '编号',
     userAdd: '创建',
     importExcel: 'excel 导入',
     exportExcel: 'excel 导出',

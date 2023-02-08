@@ -14,11 +14,13 @@
         @contextmenu.prevent="openMenu($event, index)"
       >
         {{ tag.title }}
-        <i
+        <el-icon
           v-show="!isActive(tag)"
           class="el-icon-close"
           @click.prevent.stop="onCloseClick(index)"
-        />
+        >
+          <CircleClose />
+        </el-icon>
       </router-link>
     </el-scrollbar>
 
@@ -36,6 +38,7 @@ import ContextMenu from './ContextMenu.vue'
 import { ref, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
+import { CircleClose } from '@element-plus/icons-vue'
 
 const route = useRoute()
 
@@ -140,7 +143,7 @@ watch(visible, (val) => {
         width: 16px !important;
         height: 16px !important;
         line-height: 10px;
-        vertical-align: 2px;
+        vertical-align: -2px;
         border-radius: 50%;
         text-align: center;
         transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);

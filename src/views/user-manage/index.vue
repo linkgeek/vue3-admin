@@ -34,6 +34,8 @@
 
     <el-card>
       <el-table :data="tableData" border style="width: 100%">
+        <!-- 索引 -->
+        <el-table-column label="#" type="index" align="center" />
         <el-table-column
           :label="$t('msg.excel.id')"
           prop="_id"
@@ -81,7 +83,8 @@
         <el-table-column
           :label="$t('msg.excel.action')"
           fixed="right"
-          width="300"
+          width="240"
+          align="center"
         >
           <template #default="{ row }">
             <el-button type="primary" size="small" @click="onShowClick(row._id)">
@@ -241,6 +244,13 @@ const onImportExcelClick = () => {
 const exportToExcelVisible = ref(false)
 const onToExcelClick = () => {
   exportToExcelVisible.value = true
+}
+
+/**
+ * 查看按钮点击事件
+ */
+const onShowClick = (id) => {
+  router.push(`/user/info/${id}`)
 }
 </script>
 
