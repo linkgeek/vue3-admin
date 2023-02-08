@@ -14,12 +14,12 @@
       <el-form-item label="头像" :label-width="formLabelWidth">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://120.25.227.106:9095/sys/upload"
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
         </el-upload>
       </el-form-item>
       <el-form-item label="分配角色" :label-width="formLabelWidth">
@@ -51,6 +51,37 @@ import { updateRole } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
+import { Plus } from '@element-plus/icons-vue'
+
+const imageUrl = ref('')
+
+const handleAvatarSuccess = (res, uploadFile) => {
+  console.log(res, 222, uploadFile)
+  if (res && res.code === 0) {
+    imageUrl.value = res.data.imageUrl
+    ElMessage.success('图片上传成功！')
+  } else {
+    if (res && res.msg) {
+      ElMessage.error(res.msg)
+    } else {
+      ElMessage.error('图片上传失败！')
+    }
+  }
+}
+
+// 上传文件前检验
+const beforeAvatarUpload = (rawFile) => {
+  // console.log(rawFile)
+  const type = ['image/jpeg', 'image/jpg', 'image/png']
+  if (type.indexOf(rawFile.type) === -1) {
+    ElMessage.error('上传的文件支持JPG、JPEG、PNG')
+    return false
+  } else if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('图片大小不能超过2MB!')
+    return false
+  }
+  return true
+}
 
 const addForm = reactive({
   name: '',

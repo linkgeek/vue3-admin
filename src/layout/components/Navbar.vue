@@ -28,7 +28,7 @@
             <!-- <a target="_blank" href="">
               <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
             </a> -->
-            <el-dropdown-item divided @click="logout">
+            <el-dropdown-item @click="logout()" divided>
               {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -113,6 +113,7 @@ const logout = () => {
         }
       }
     }
+    :global(.el-dropdown-menu__item--divided) {height: 0 !important}
   }
 }
 </style>
