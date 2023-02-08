@@ -1,3 +1,4 @@
+// 验证密码
 export const validatePassword = () => {
   return (rule, value, callback) => {
     if (value.length < 6) {

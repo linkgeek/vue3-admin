@@ -15,7 +15,6 @@ let mChart
 onMounted(() => {
   mChart = echarts.init(target.value)
   renderChart()
-  console.log('props.data', props.data)
 })
 
 const props = defineProps({

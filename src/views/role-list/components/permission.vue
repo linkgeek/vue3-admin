@@ -29,7 +29,7 @@ import { defineProps, defineEmits, ref, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import { permissionList } from '@/api/permission'
-import { rolePermission, distrubutePermission } from '@/api/role'
+import { rolePermission, distributePermission } from '@/api/role'
 import { watchSwitchLang } from '@/utils/i18n'
 
 const props = defineProps({
@@ -77,7 +77,7 @@ const emits = defineEmits(['update:modelValue'])
 
 const i18n = useI18n()
 const onConfirm = async () => {
-  await distrubutePermission({
+  await distributePermission({
     roleId: props.roleId,
     permissions: treeRef.value.getCheckedKeys()
   })

@@ -31,7 +31,6 @@ const data = ref([])
 const getData = async (date) => {
   const { result } = await getChartTimeAmount(date)
   data.value = result
-  console.log(result)
   renderChart()
 }
 getData()
