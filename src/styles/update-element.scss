@@ -11,12 +11,13 @@
     border-radius: 0 !important;
   }
 }
-.el-input__inner {
-  box-shadow: none !important;
-  --el-select-input-focus-border-color: none !important;
-}
 
 // 处理图片的灰色底
 .el-avatar {
   --el-avatar-bg-color: none !important;
+}
+
+// 处理sidebar图标显示
+.hideSidebar .sidebar-menu .el-sub-menu .svg-icon {
+  margin-right: -16px !important;
 }

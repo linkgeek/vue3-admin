@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="sidebar-menu">
     <div class="logo-container">
       <el-avatar shape="square" :src="logoUrl" />
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">Vue3-admin</h1>
