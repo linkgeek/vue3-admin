@@ -112,6 +112,8 @@ const handleLogin = () => {
       .dispatch('user/login', loginForm.value)
       .then(() => {
         loading.value = false
+        // TODO 优化 重置tags
+        location.reload()
         ElMessage.success('登录成功')
         // 登录后操作
         router.push('/')
