@@ -1,4 +1,7 @@
 const path = require('path')
+const webpack = require('webpack')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const productionGzipExtensions = ['js']
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -40,5 +43,26 @@ module.exports = {
       .type('javascript/auto')
       .include.add(/node_modules/)
       .end()
+  },
+  // 优化加载
+  productionSourceMap: false,
+  // 压缩
+  configureWebpack: {
+    plugins: [
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      // 配置compression-webpack-plugin压缩
+      new CompressionWebpackPlugin({
+        // filename: '[path][base].gz',
+        algorithm: 'gzip',
+        test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+        threshold: 10240, // 只有大小大于该值的资源会被处理 单位 bytes
+        minRatio: 0.8, // 只有压缩率小于这个值的资源才会被处理
+        deleteOriginalAssets: false // 删除原文件
+      }),
+      new webpack.optimize.LimitChunkCountPlugin({
+        maxChunks: 5,
+        minChunkSize: 100
+      })
+    ]
   }
 }

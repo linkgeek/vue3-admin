@@ -13,6 +13,7 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
+npm run build --report
 ```
 
 ### Lints and fixes files

@@ -119,7 +119,7 @@ const handleLogin = () => {
         router.push('/')
       })
       .catch((err) => {
-        console.log(err)
+        console.log('handleLogin: ', err)
         loading.value = false
       })
   })

@@ -35,3 +35,15 @@ npm i dayjs@1.10.6
 
 # 升级element-plus
 npm i --save element-plus@2.0.4
+
+# 安装删除工具
+npm install rimraf -g
+
+# 执行删除命令
+rimraf node_modules
+
+# 打包优化压缩
+npm i -D compression-webpack-plugin@6.1.1
+
+# 引入 webpack-bundle-analyzer 插件
+npm install --save-dev webpack-bundle-analyzer
